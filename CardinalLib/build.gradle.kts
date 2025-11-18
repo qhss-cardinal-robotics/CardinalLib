@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "org.example.cardinallib"
+    namespace = "org.lib.cardinallib"
     compileSdk = 33
 
     defaultConfig {
