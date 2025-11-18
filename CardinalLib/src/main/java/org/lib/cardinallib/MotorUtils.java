@@ -18,11 +18,4 @@ public class MotorUtils {
     /**
      * Set all motors in the array to the same power
      */
-    public static void setPowerAll(double power, DcMotor... motors) {
-        for (DcMotor motor : motors) {
-            if (motor != null) {
-                motor.setPower(power);
-            }
-        }
-    }
 }
