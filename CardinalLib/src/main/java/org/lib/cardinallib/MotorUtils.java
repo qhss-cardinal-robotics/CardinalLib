@@ -15,7 +15,4 @@ public class MotorUtils {
         }
     }
 
-    /**
-     * Set all motors in the array to the same power
-     */
 }
