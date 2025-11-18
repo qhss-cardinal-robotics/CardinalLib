@@ -1,10 +1,7 @@
 jdk:
   - openjdk17
-
-install:
-  - ./gradlew clean build
-
-build:
-  android:
+android:
+  project: CardinalLib
+  build:
     tasks:
-      - bundleReleaseAar
+      - clean assembleRelease

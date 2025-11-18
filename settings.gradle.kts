@@ -14,5 +14,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "cardinallib"
+rootProject.name = "CardinalLibProject"
 include(":CardinalLib")  // Include your Android library module
