@@ -27,18 +27,18 @@ dependencies {
 
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "org.example"
-            artifactId = "CardinalLib"
-            version = "1.0.0"
-
-            // Specify the .aar artifact
-            artifact("$buildDir/outputs/aar/CardinalLib-release.aar")
-        }
-    }
-    repositories {
-        mavenLocal()
-    }
-}
+//publishing {
+//    publications {
+//        create<MavenPublication>("release") {
+//            groupId = "org.example"
+//            artifactId = "CardinalLib"
+//            version = "1.0.0"
+//
+//            // Specify the .aar artifact
+//            artifact("$buildDir/outputs/aar/CardinalLib-release.aar")
+//        }
+//    }
+//    repositories {
+//        mavenLocal()
+//    }
+//}
