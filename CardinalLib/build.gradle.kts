@@ -3,15 +3,18 @@ plugins {
     id("maven-publish")
 }
 
-group = "org.example"
-version = "1.0.0"
-
 android {
     namespace = "org.example.cardinallib"
     compileSdk = 33
 
     defaultConfig {
         minSdk = 24
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
     }
 
     compileOptions {
