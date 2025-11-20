@@ -19,31 +19,31 @@ public class Pose2d {
     /** Y-coordinate on the field*/
     public double y;
     /** Heading (orientation) in radians */
-    public double orientation;
+    public double heading;
 
     /**
      * Creates a Pose2d with the specified coordinates and heading.
      *
      * @param x X-coordinate
      * @param y Y-coordinate
-     * @param orientation Orientation in radians
+     * @param heading Heading in radians
      */
-    public Pose2d(double x, double y, double orientation) {
+    public Pose2d(double x, double y, double heading) {
         this.x = x;
         this.y = y;
-        this.orientation = orientation;
+        this.heading = heading;
     }
 
     /**
      * Update this Pose2d with the specified coordinate and heading
      * @param x X-coordinate
      * @param y Y-coordinate
-     * @param orientation Orientation in radians
+     * @param heading Heading in radians
      */
-    public void set(double x, double y, double orientation) {
+    public void set(double x, double y, double heading) {
         this.x = x;
         this.y = y;
-        this.orientation = orientation;
+        this.heading = heading;
     }
 
 }
