@@ -1,4 +1,4 @@
-package org.lib.cardinallib;
+package org.lib.cardinallib.math;
 
 public class MathFormulas {
     public static double AngleFormula(Pose2d robot, Pose2d goal) {
