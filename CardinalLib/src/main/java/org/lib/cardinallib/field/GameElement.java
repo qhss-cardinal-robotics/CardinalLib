@@ -1,4 +1,5 @@
 package org.lib.cardinallib.field;
+import org.lib.cardinallib.math.Pose2d;
 
 public abstract class GameElement {
     protected double x;

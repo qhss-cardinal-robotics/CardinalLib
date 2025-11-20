@@ -12,6 +12,6 @@ public class AngleFormula {
     public double getAngle() {
         double dx = robot.x-goal.x;
         double dy = robot.y-goal.y;
-        return Math.atan2(dy/dx); // angle in radians
+        return Math.atan2(dy, dx); // angle in radians
     }
 }
