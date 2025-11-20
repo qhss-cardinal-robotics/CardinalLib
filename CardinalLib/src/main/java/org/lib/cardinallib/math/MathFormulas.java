@@ -35,7 +35,7 @@ public class MathFormulas {
      */
     public static double DistFormula(Pose2d a, Pose2d b) {
         double dx = b.x - a.x;
-        double dy = bg.y - a.y;
+        double dy = b.y - a.y;
         return Math.sqrt(dx * dx + dy * dy);
     }
 
