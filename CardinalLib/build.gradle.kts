@@ -40,7 +40,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "org.example"
             artifactId = "CardinalLib"
-            version = "1.0.5"
+            version = "1.0.6"
 
             // Point to the AAR output
             artifact(layout.buildDirectory.file("outputs/aar/CardinalLib-release.aar"))

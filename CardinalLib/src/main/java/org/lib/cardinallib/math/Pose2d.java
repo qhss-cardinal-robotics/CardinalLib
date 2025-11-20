@@ -1,6 +1,7 @@
 package org.lib.cardinallib.math;
 
 public class Pose2d {
+
     public double x;
     public double y;
     public double orientation;
