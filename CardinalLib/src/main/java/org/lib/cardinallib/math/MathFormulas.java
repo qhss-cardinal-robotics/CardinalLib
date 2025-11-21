@@ -102,7 +102,7 @@ public class MathFormulas {
             throw new IllegalArgumentException("Angle results in undefined projectile motion (sin(2θ) = 0).");
         }
 
-        double quadraticTerm = (GRAVITY * x * x) / denominator);
+        double quadraticTerm = (GRAVITY * x * x) / denominator;
         return linearTerm - quadraticTerm;
 
     }
