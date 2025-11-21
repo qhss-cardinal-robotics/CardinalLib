@@ -107,6 +107,4 @@ public class MathFormulas {
 
     }
 
-//    public static double PowerConversion() {}
-
 }
