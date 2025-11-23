@@ -1,6 +1,4 @@
 package org.lib.cardinallib.commands;
-
-import
 public class WaitCommand extends Command {
 
     private final long durationNanos;
