@@ -9,7 +9,7 @@ In your FTC Robot Controller project, add CardinalLib as a dependency in your `b
 
 ```kotlin
 dependencies {
-    implementation("com.github.danvluewubley:CardinalLib:<commit-hash-or-tag>")
+    implementation("com.github.qhss-cardinal-robotics:CardinalLib:<commit-hash-or-tag>")
 }
     repositories {
     mavenCentral()
