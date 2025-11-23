@@ -1,31 +1,27 @@
 package org.lib.cardinallib.math;
 
 /**
- * MathFormulas provides utility functions for calculating
- * geometric and physical relationships between positions on the field.
- *
- * <p>Includes functions that calculate:</p>
- * <ul>
- *     <li>The angle between two positions (in radians)</li>
- *     <li>The distance between two positions (in meters)</li>
- *     <li>The distance traveled by a projectile using the range formula</li>
- *     <li>The initial velocity required for a projectile to travel a given distance</li>
- *     <li>The height of a projectile at a given horizontal distance</li>
- * </ul>
+ * Utility class for geometric and projectile motion calculations.
+ * 
+ * <p>Provides methods for calculating angles, distances, and projectile trajectories.
+ * Projectile formulas assume standard gravity (9.81 m/s²), no air resistance, and
+ * launch/landing at the same height.</p>
+ * 
+ * @see Pose2d
+ * @see RobotFormulas
  */
 public class MathFormulas {
-    /** Gravitational constant (m/s^2) */
+    /** Standard gravitational acceleration constant (9.81 m/s²) */
     private static final double GRAVITY = 9.81;
-    /** Small tolerance used to avoid floating-point divide-by-zero errors */
+    /** Small tolerance value used to avoid floating-point divide-by-zero errors */
     private static final double EPSILON = 1e-9;
 
     /**
-     * Calculates the angle from the first position to the second position.
-     * The returned angle is in radians.
-     *
-     * @param a The Pose2d representing the first position (e.g., the robot)
-     * @param b  The Pose2d representing the second position (e.g., the goal)
-     * @return The angle in radians from the first position to the second position
+     * Calculates the bearing angle from one position to another.
+     * 
+     * @param a Starting position (e.g., robot's current pose)
+     * @param b Target position (e.g., goal or waypoint)
+     * @return Bearing angle in radians from {@code a} to {@code b}, in range [-π, π]
      */
     public static double AngleFormula(Pose2d a, Pose2d b) {
 
@@ -37,10 +33,10 @@ public class MathFormulas {
 
     /**
      * Calculates the Euclidean distance between two positions.
-     *
-     * @param a The Pose2d representing the first position
-     * @param b  The Pose2d representing the second position
-     * @return The straight-line distance between the two positions (same units as Pose2d)
+     * 
+     * @param a First position
+     * @param b Second position
+     * @return Straight-line distance in the same units as Pose2d coordinates
      */
     public static double DistFormula(Pose2d a, Pose2d b) {
 
@@ -51,11 +47,13 @@ public class MathFormulas {
     }
 
     /**
-     * Calculates the distance traveled by a projectile given
-     * that the projectile lands at the same height
-     * @param v initial velocity (in meters/second) of projectile
-     * @param theta angle (in radians) above the normal that the projectile is being launched at
-     * @return distance (in meters) of the total distance the object traveled
+     * Calculates the horizontal range of a projectile.
+     * 
+     * <p>Formula: R = (v² × sin(2θ)) / g. Maximum range occurs at 45°.</p>
+     * 
+     * @param v Initial velocity in m/s
+     * @param theta Launch angle in radians above horizontal
+     * @return Horizontal distance traveled in meters
      */
     public static double calculateRange(double v, double theta) {
 
@@ -65,11 +63,14 @@ public class MathFormulas {
     }
 
     /**
-     * Calculates the initial velocity required for a projectile to
-     * travel a given distance at a given angle
-     * @param R distance (in meters) traveled by projectile
-     * @param theta angle (in radians) above the normal that the projectile is being launched at
-     * @return initial velocity (in meters/second) of projectile
+     * Calculates the initial velocity required to achieve a given range.
+     * 
+     * <p>Inverse of {@link #calculateRange(double, double)}. Formula: v = √(R × g / sin(2θ))</p>
+     * 
+     * @param R Desired horizontal distance in meters
+     * @param theta Launch angle in radians above horizontal
+     * @return Required initial velocity in m/s
+     * @throws IllegalArgumentException if sin(2θ) = 0 (θ = 0 or π/2)
      */
     public static double calculateInitialVelocity(double R, double theta) {
 
@@ -87,11 +88,14 @@ public class MathFormulas {
 
     /**
      * Calculates the height of a projectile at a given horizontal distance.
-     *
-     * @param v initial velocity in meters/second
-     * @param theta launch angle in radians above the horizontal
-     * @param x horizontal distance in meters
-     * @return height in meters of the projectile above its initial position at distance x
+     * 
+     * <p>Formula: y = x × tan(θ) - (g × x²) / (2 × v² × cos²(θ))</p>
+     * 
+     * @param v Initial velocity in m/s
+     * @param theta Launch angle in radians above horizontal
+     * @param x Horizontal distance from launch point in meters
+     * @return Height in meters above launch position (can be negative)
+     * @throws IllegalArgumentException if cos(θ) ≈ 0 (θ ≈ π/2)
      */
     public static double heightAtDistance(double v, double theta, double x) {
 
@@ -107,6 +111,18 @@ public class MathFormulas {
 
     }
 
+    /**
+     * Calculates the required flywheel RPM to achieve a given projectile range.
+     * 
+     * <p>Assumes projectile velocity equals flywheel tangential velocity (v = ω × r).
+     * Real-world results may vary due to friction and energy losses.</p>
+     * 
+     * @param rBall Ball/projectile radius in meters
+     * @param distance Desired horizontal distance in meters
+     * @param theta Launch angle in radians above horizontal
+     * @return Required flywheel RPM
+     * @throws IllegalArgumentException if sin(2θ) = 0 (θ = 0 or π/2)
+     */
     public static double findRequiredRPM(double rBall, double distance, double theta) {
         return (60 / (2 * Math.PI * rBall)) * Math.sqrt((distance * GRAVITY) / Math.sin(2*theta));
     }
