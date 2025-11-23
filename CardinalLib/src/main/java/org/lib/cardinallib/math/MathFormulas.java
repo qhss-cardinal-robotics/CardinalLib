@@ -107,4 +107,8 @@ public class MathFormulas {
 
     }
 
+    public static double findRequiredRPM(double rBall, double distance, double theta) {
+        return (60 / (2 * Math.PI * rBall)) * Math.sqrt((distance * GRAVITY) / Math.sin(2*theta));
+    }
+
 }
